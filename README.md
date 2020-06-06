@@ -1,8 +1,11 @@
 ## About this project
 
-This project was made for the purpose of a technical challenge during a recruitment process. 
-It includes nearly all the features required by the directions except the priority update on drag'n drop. It required more implementation/time and I found the directions a bit unclear about how the priority should be calculated. 
-Please, have in that the code produced here was made according the time limit I was given to fulfill this challenge (1h) and therefore doesn't completely reflect how I'd code in a real working situation.
+This project was made for the purpose of a technical challenge during a recruiting process. 
+It includes nearly all the features required by the directions except the priority update on drag'n drop change. It required more implementation/time and I found the directions a bit unclear about how the priority should be calculated. 
+
+Please, have in mind that the code produced here was made according the time limit I was given to fulfill this challenge (1h) and therefore doesn't reflect how I'd code in a real working situation. 
+
+It was made completely from scrach without any external library (except jQuery). Feel free to check the commit history to get to know how things were implemented.
 
 I'll eventually complete this project in the future.
 
@@ -20,9 +23,10 @@ You will be graded on how well-written & readable your code is, if it works, and
 composer install
 ```
 
-Create a new local database and update the .env if according your database configuration (exceptionally the .env file is included for the purpose of this test)
+Create a new local database and rename the '.env.example' file into '.env'. Don't forget to also update it according your local database configuration.
 
 Run base migrations and then the server
+
 ```
 php artisan migrate
 php artisan serve
