@@ -1,75 +1,25 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout')
 
-        <title>Laravel</title>
+@section('content')
+    <a href="{{ route('tasks.index') }}">Back to tasks list</a>
+    <br/>
+    <br/>
+    <h1>Adding a new task</h1>
+    <form method="post">
+        {{ csrf_field() }}
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <form>
-
-                </form>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Name" name="name" value="{{ $task->name }}">
+            <input type="number" class="form-control" placeholder="Priority" name="priority" value="{{ $task->priority }}">
+            <input type="submit" class="btn btn-primary">
         </div>
-    </body>
-</html>
+    </form>
+
+    @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $err)
+                <li style="color: red">{{ $err }}</li>
+            @endforeach
+        </ul>
+    @endif
+@endsection

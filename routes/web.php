@@ -14,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    Route::get('/tasks', ['as' => 'index', 'uses' => 'TaskController@index']);
 });
 
 Route::group(['prefix' => 'tasks', 'as' => 'tasks.'], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'TaskController@index']);
-    Route::post('/', ['as' => 'create', 'uses' => 'TaskController@create']);
+
+    Route::get('/new', ['as' => 'create', 'uses' => 'TaskController@create']);
+    Route::post('/new', ['as' => 'create', 'uses' => 'TaskController@store']);
 
     Route::get('/{id}', ['as' => 'edit', 'uses' => 'TaskController@edit']);
     Route::post('/{id}', ['as' => 'update', 'uses' => 'TaskController@update']);
