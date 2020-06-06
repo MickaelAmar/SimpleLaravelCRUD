@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    Route::get('/tasks', ['as' => 'index', 'uses' => 'TaskController@index']);
+    return redirect()->route('tasks.index');
 });
 
 Route::group(['prefix' => 'tasks', 'as' => 'tasks.'], function () {
