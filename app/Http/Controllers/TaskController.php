@@ -12,7 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('tasks.index', ['tasks' => Task::get()]);
+        return view('tasks.index', ['tasks' => Task::orderBy('priority')->get()]);
     }
 
     /**
@@ -57,7 +57,7 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         Task::findOrFail($id)->update($request->all());
-        return redirect()->route('tasks.edit', ['id' => $id]);
+        return redirect()->route('tasks.index');
     }
 
     /**
